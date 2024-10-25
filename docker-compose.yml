@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  s-frontend:
+    image: node:22
+    container_name: sample-frontend
+  
+  s-backend:
+    image: golang:1.22
+    container_name: sample-backend
+    depends_on:
+      - db
+  
+  s-db:
+    image: mariadb:11.4
+    ports:
+      - 3306:3306
+    container_name: sample-db
+    volumes:
+      - db_data:/var/lib/mysql
+    environment:
+      MARIADB_DATABASE: defaultdb
+      MARIADB_USER: dbuser
+      MARIADB_PASSWORD: dbpass
+      MARIADB_ROOT_PASSWORD: rootpass
+      TZ: Asia/Tokyo
+    
+  adminer:
+    image: adminer
+    ports:
+      - 8080:8080
+    container_name: sample-adminer
+
+volumes:
+  db_data:

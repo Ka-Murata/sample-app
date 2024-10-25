@@ -1,0 +1,9 @@
+{
+    "name": "sample-frontend",
+    "dockerComposeFile": [
+        "../../docker-compose.yml",
+        "../../.devcontainer/docker-compose.yml"
+    ],
+    "service": "s-frontend",
+    "workspaceFolder": "/workspaces/sample/frontend"
+}
