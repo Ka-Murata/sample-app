@@ -9,7 +9,7 @@ services:
     image: golang:1.22
     container_name: sample-backend
     depends_on:
-      - db
+      - s-db
   
   s-db:
     image: mariadb:11.4
